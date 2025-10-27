@@ -10,7 +10,7 @@ pipeline {
     EC2_HOST       = 'ec2-3-22-114-80.us-east-2.compute.amazonaws.com'
     EC2_USER       = 'ubuntu'
     EC2_CREDS      = 'ec2-creds'                
-    APP_PORT       = '8080'
+    APP_PORT       = '9090'
   }
   
   stages {
