@@ -65,7 +65,7 @@ pipeline {
                def remote = "${user}@${env.EC2_HOST}"
 
                if (isUnix()) {
-                   sh "chmod 600 \"$EC2_KEY\" && ssh -o StrictHostKeyChecking=no -o IdentitiesOnly=yes -i \"$EC2_KEY\" ${remote} 'echo connected'"
+                   sh "chmod 600 \"$EC2_KEY\" && ssh -4 -o StrictHostKeyChecking=no -o IdentitiesOnly=yes -i \"$EC2_KEY\" ${remote} 'echo connected'"
                    sh """
                       ssh -4 -o StrictHostKeyChecking=no -o IdentitiesOnly=yes -i "$EC2_KEY" ${remote} \\
                       'docker pull ${DOCKERHUB_REPO}:${IMAGE_TAG} && \\
