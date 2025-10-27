@@ -33,7 +33,7 @@ pipeline {
       }
     }
 
-    stage('Push Docker image') {
+    /*stage('Push Docker image') {
       steps {
         script {
           withCredentials([usernamePassword(credentialsId: env.DOCKERHUB_CRED, usernameVariable: 'DH_USER', passwordVariable: 'DH_PASS')]) {
@@ -51,7 +51,7 @@ pipeline {
           }
         }
       }
-    }
+    } */
     
     stage('Deploy on EC2 (pull & run)') {
         when { expression { return env.EC2_HOST?.trim() } }
