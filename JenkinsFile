@@ -24,7 +24,7 @@ pipeline {
           // Ensure Docker is available on the agent (Docker Desktop on Windows or Docker Engine on Linux)
           if (isUnix()) {
             sh "docker version"
-            sh "docker build -t ${env.DOCKERHUB_REPO}:${env.IMAGE_TAG} ."
+            sh "docker buildx build --platform linux/amd64 -t ${env.DOCKERHUB_REPO}:${env.IMAGE_TAG} --push ."
           } else {
             bat "docker version"
             bat "docker build -t ${env.DOCKERHUB_REPO}:${env.IMAGE_TAG} ."
