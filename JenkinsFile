@@ -10,7 +10,7 @@ pipeline {
     EC2_HOST       = 'ec2-3-22-114-80.us-east-2.compute.amazonaws.com'
     EC2_USER       = 'ubuntu'
     EC2_CREDS      = 'ec2-creds'                
-    APP_PORT       = '9090'
+    APP_PORT       = '8080'
   }
   
   stages {
@@ -70,7 +70,7 @@ pipeline {
                       ssh -o StrictHostKeyChecking=no -o IdentitiesOnly=yes -i "$EC2_KEY" ${remote} \\
                       'docker pull ${DOCKERHUB_REPO}:${IMAGE_TAG} && \\
                        docker rm -f hello || true && \\
-                       docker run -d --name hello -p 80:${APP_PORT} ${DOCKERHUB_REPO}:${IMAGE_TAG}'
+                       docker run -d --name hello -p 9090:${APP_PORT} ${DOCKERHUB_REPO}:${IMAGE_TAG}'
                       """
                 } else {
                    bat """
